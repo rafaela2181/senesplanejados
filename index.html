@@ -352,6 +352,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap:1.25rem;
   }
   .amb-card{ grid-column:span 1; }
+  .amb-card--wide{ grid-column:span 2; }
+  .amb-card--wide .frame{ aspect-ratio:3/2; }
+  .amb-card--wide .carousel-slide{ object-position:center 30%; }
 
   .frame{
     position:relative;
@@ -899,7 +902,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </article>
 
-      <article class="amb-card" data-reveal>
+      <article class="amb-card amb-card--wide" data-reveal>
         <div class="frame has-photo carousel" style="--tint:210 15% 35%;">
           <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
           <div class="carousel-track">
