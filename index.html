@@ -424,10 +424,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     width:30px; height:30px; border-radius:50%; border:1px solid hsl(0 0% 100% / .4);
     background:hsl(0 0% 0% / .38); backdrop-filter:blur(3px);
     color:#fdf8ee; display:flex; align-items:center; justify-content:center;
-    cursor:pointer; opacity:0; transition:opacity .25s ease, background .25s ease;
+    cursor:pointer; transition:opacity .25s ease, background .25s ease;
   }
-  .frame:hover .carousel-arrow{ opacity:1; }
+  @media (hover:hover) and (pointer:fine){
+    .carousel-arrow{ opacity:0; }
+    .frame:hover .carousel-arrow{ opacity:1; }
+  }
   .carousel-arrow:hover{ background:hsl(0 0% 0% / .6); }
+  @media (max-width:720px){
+    .carousel-arrow{ width:36px; height:36px; }
+    .carousel-arrow svg{ width:16px; height:16px; }
+  }
   .carousel-arrow.carousel-prev{ left:8px; }
   .carousel-arrow.carousel-next{ right:8px; }
   .carousel-arrow svg{ width:14px; height:14px; }
@@ -1224,6 +1231,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var slides = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-slide'));
     var dots = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-dots button'));
     var idx = 0;
+    var swiped = false;
     function go(i){
       idx = (i + slides.length) % slides.length;
       track.style.transform = 'translateX(-' + (idx * 100) + '%)';
@@ -1234,8 +1242,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (prevBtn){ prevBtn.addEventListener('click', function(e){ e.stopPropagation(); go(idx - 1); }); }
     if (nextBtn){ nextBtn.addEventListener('click', function(e){ e.stopPropagation(); go(idx + 1); }); }
     dots.forEach(function(d, di){ d.addEventListener('click', function(e){ e.stopPropagation(); go(di); }); });
+
+    if (slides.length > 1){
+      var startX = 0, startY = 0, tracking = false;
+      track.addEventListener('touchstart', function(e){
+        var t = e.touches[0];
+        startX = t.clientX; startY = t.clientY; tracking = true; swiped = false;
+      }, { passive:true });
+      track.addEventListener('touchmove', function(e){
+        if (!tracking) return;
+        var t = e.touches[0];
+        if (Math.abs(t.clientX - startX) > 10) swiped = true;
+      }, { passive:true });
+      track.addEventListener('touchend', function(e){
+        if (!tracking) return;
+        tracking = false;
+        var t = e.changedTouches[0];
+        var dx = t.clientX - startX, dy = t.clientY - startY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){
+          go(dx < 0 ? idx + 1 : idx - 1);
+        }
+      }, { passive:true });
+    }
+
     slides.forEach(function(img){
       img.addEventListener('click', function(){
+        if (swiped){ swiped = false; return; }
         openLightbox(slides.map(function(s){ return s.src; }), idx);
       });
     });
