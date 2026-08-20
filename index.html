@@ -723,6 +723,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .amb-card--wide .frame{ aspect-ratio:3/4; }
     .amb-card--wide .carousel-slide{ object-position:center 25%; }
     .foot-bar{ flex-direction:column; text-align:center; }
+    .statbar .container{ grid-template-columns:1fr; gap:0; }
+    .stat{ padding-block:1.15rem; padding-inline:1.5rem; }
+    .stat + .stat::before{ left:14%; right:14%; top:0; bottom:auto; width:auto; height:1px; }
+    .stat:nth-child(3)::before{ display:block; }
   }
 </style>
 </head>
