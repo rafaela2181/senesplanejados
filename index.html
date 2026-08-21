@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
 <!-- Google Tag Manager -->
@@ -324,7 +324,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-block:1px solid hsl(var(--line)/.12);
   }
   .statbar .container{
-    display:grid; grid-template-columns:repeat(4,1fr);
+    display:grid; grid-template-columns:repeat(6,1fr);
     padding-block:2.4rem;
   }
   .stat{ text-align:center; padding-inline:1rem; position:relative; transition:transform .35s ease; }
@@ -705,7 +705,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .faq-grid{ grid-template-columns:1fr; }
     .contato-inner{ grid-template-columns:1fr; }
     .statbar .container{ grid-template-columns:repeat(2,1fr); gap:1.6rem 0; }
-    .stat:nth-child(3)::before{ display:none; }
+    .stat:nth-child(3)::before, .stat:nth-child(5)::before{ display:none; }
   }
   @media (max-width: 720px){
     .nav-links, .nav .btn-brass{ display:none; }
@@ -726,7 +726,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .statbar .container{ grid-template-columns:1fr; gap:0; }
     .stat{ padding-block:1.15rem; padding-inline:1.5rem; }
     .stat + .stat::before{ left:14%; right:14%; top:0; bottom:auto; width:auto; height:1px; }
-    .stat:nth-child(3)::before{ display:block; }
+    .stat:nth-child(3)::before, .stat:nth-child(5)::before{ display:block; }
   }
 </style>
 </head>
@@ -807,7 +807,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="stat"><strong>Fabricação própria</strong><span>Sem intermediários</span></div>
     <div class="stat"><strong>100% MDF</strong><span>Alto padrão em cada peça</span></div>
-    <div class="stat"><strong>Projeto&nbsp;&rarr;&nbsp;Instalação</strong><span>Acompanhamento em cada etapa</span></div>
+    <div class="stat"><strong>Projeto&nbsp;&rarr;&nbsp;Montagem</strong><span>Acompanhamento em cada etapa</span></div>
+    <div class="stat"><strong>1 Ano de Garantia</strong><span>Peça e mão de obra</span></div>
+    <div class="stat"><strong>Projeto 3D Incluso</strong><span>Sem custo extra no orçamento</span></div>
     <div class="stat"><strong>Residencial &amp; Corporativo</strong><span>Toda a Grande Florianópolis</span></div>
   </div>
 </div>
@@ -1099,6 +1101,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-item" data-reveal>
         <h3>A montagem está incluída no projeto?</h3>
         <p>Sim. Nossa equipe própria acompanha desde o projeto até a montagem final, sem terceirizar essa etapa.</p>
+      </div>
+      <div class="faq-item" data-reveal>
+        <h3>Os móveis têm garantia?</h3>
+        <p>Sim, todo projeto Senes sai com 1 ano de garantia, cobrindo estrutura, ferragens e acabamento.</p>
       </div>
     </div>
   </div>
